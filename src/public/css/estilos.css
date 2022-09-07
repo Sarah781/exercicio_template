@@ -1,8 +1,8 @@
 /* Exemplo de CSS servido estaticamente pelo Express.
-Autor: Fabrício G. M. de Carvalho
+Autor: Sarah
 */
 body{
-    background-color:aquamarine;
+    background-color:rgb(129, 127, 255);
 }
 
 ul{
@@ -16,7 +16,7 @@ li{
     margin-top: 10pt;
     width: 150pt;
     height: 150pt;
-    background-color: yellow;
+    background-color: rgb(0, 255, 255);
     border-radius: 20%;
     text-align: center;
     padding-top: 70pt;

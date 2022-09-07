@@ -21,20 +21,28 @@ app.set('views', './views');
 /* Configurando o diretório que serve arquivos estáticos.*/
 app.use(express.static('public'));
 
-app.get('/', listProjectHandler);
+app.get('/', aboutHandler);
+app.get('/sobre-mim', aboutHandler);
+app.get('/portfolio', listProjectHandler);
 
 app.listen(port, listenHandler);
 
+function aboutHandler(req, res){
+    res.render('sobre_mim.ejs');    
+}
+
+/* Os dados a seguir, em uma aplicação real, deveriam vir de um BD */
+function listProjects() {
+    return [
+        new Projeto("CyberMind", "JavaScript", 2020, 2020),
+        new Projeto("GSW", "C#", 2021, 2021),
+        new Projeto("IonicHealth", "C#", 2021, 2021),
+        new Projeto("SrSoja", "React Native", 2022, 2022),
+    ];
+}
+
 function listProjectHandler(req, res){
-    /* Os dados a seguir, em uma aplicação real, deveriam vir de um BD */
-    let projeto_1 = new Projeto("software","JavaScript", 2020, 2023); 
-    let projeto_2 = new Projeto("social","",2020,2021);
-    let projeto_3 = new Projeto("software","HTML", 2021, 2021);    
-    let projetos = [];
-    projetos.push(projeto_1);
-    projetos.push(projeto_2);
-    projetos.push(projeto_3);
-    res.render('listar_projetos.ejs',{lista_projetos: projetos});    
+    res.render('listar_projetos.ejs', {lista_projetos: listProjects()});    
 }
 
 function listenHandler(){
